@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+:root {
+  --background: #446171;
+  --foreground: #c0e2f4;
+  --navbar: #2a3c46;
+  --button: #23536d;
+  --input-background: #1a242ad8;
+  --color: #dceffa;
+}
+
+[data-theme="light"] {
+  --background: #cce8f7;
+  --foreground: #2f393f;
+  --navbar: #6e9ab1;
+  --button: #86b9d4;
+  --input-background: #7db5d3;
+}
+
+/* 
+[data-theme="dark"] {
+  --background: #446171;
+  --foreground: #c0e2f4;
+  --navbar: #2a3c46;
+  --button: #23536d;
+  --input-background: #1a242ad8;
+} */
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+nav {
+  background-color: var(--navbar);
+  color: var(--foreground);
+  padding: 1rem;
+}
+
+.nav-button {
+  background-color: var(--button);
+  color: var(--foreground);
+  border: none;
+  padding: 0.5rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+  filter: brightness(1.1);
+}
+
+input[type="text"] {
+  background-color: var(--input-background); /* o usar var(--background2) si tienes */
+  color: var(--foreground);
+  padding: 0.5rem;
+  border-radius: 0.8rem;
+}
+
+input[type="text"]:focus {
+  border: 1px solid var(--foreground);
+  outline: none;
+}
