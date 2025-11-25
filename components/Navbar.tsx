@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Search, CloudSun } from "lucide-react";
+import { Search,Rainbow } from "lucide-react";
 export default function Navbar({ onSearch }: { onSearch: (city: string) => void }) {
   const [city, setCity] = useState("");
 
@@ -14,8 +14,9 @@ export default function Navbar({ onSearch }: { onSearch: (city: string) => void 
   return (
     <nav className=" p-4 flex items-center justify-between">
       <div className=" flex gap-2 items-center">
-        <span className="mt-1.5">WeatherSpot</span>
-        <CloudSun size={28} />
+        <span className="text-lg mt-1">WeatherSpot</span>
+      
+        <Rainbow />
       </div>
 
       <div className="flex items-center gap-2">

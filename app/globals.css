@@ -6,7 +6,7 @@
   --navbar: #2a3c46;
   --button: #23536d;
   --input-background: #1a242ad8;
-  --color: #dceffa;
+  --card-label: #f7d4c0a3;
 }
 
 [data-theme="light"] {
@@ -16,15 +16,6 @@
   --button: #86b9d4;
   --input-background: #7db5d3;
 }
-
-/* 
-[data-theme="dark"] {
-  --background: #446171;
-  --foreground: #c0e2f4;
-  --navbar: #2a3c46;
-  --button: #23536d;
-  --input-background: #1a242ad8;
-} */
 
 body {
   background-color: var(--background);
@@ -54,7 +45,7 @@ nav {
 }
 
 input[type="text"] {
-  background-color: var(--input-background); /* o usar var(--background2) si tienes */
+  background-color: var(--input-background);
   color: var(--foreground);
   padding: 0.5rem;
   border-radius: 0.8rem;
@@ -63,4 +54,9 @@ input[type="text"] {
 input[type="text"]:focus {
   border: 1px solid var(--foreground);
   outline: none;
+}
+
+.card-label {
+  background: var(--navbar);
+  color: var(--background)
 }

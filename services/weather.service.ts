@@ -1,3 +1,5 @@
+import { toastError } from "@/app/helpers/alerts";
+
 // https://api.openweathermap.org/data/2.5/weather?q={ciudad}&appid={tu_api_key}&units=metric&lang=es
 const API_KEY_ = process.env.NEXT_PUBLIC_API_KEY;
 
@@ -11,7 +13,6 @@ export const getWeatherByCity = async (city: string) => {
       throw new Error(error.message || "Error al obtener datos de clima ");
     }
     const data = await response.json();
-    console.log("esta es mi data de clima", data);
 
     return data;
   } catch (error) {
