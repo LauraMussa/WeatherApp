@@ -25,14 +25,6 @@ export default function WeatherCard({ data }: { data: WeatherDataType | null }) 
         <div>
           <div className="flex gap-1 justify-center items-center text-xl">
             <span className="mt-2">Busca datos meteorológico por ciudad</span>
-            
-          </div>
-          <div
-            style={{ background: "var(--navbar)", color: "var(--background)", borderRadius: "12px" }}
-            className="absolute right-6 -bottom-5 px-4 py-2 font-semibold shadow flex items-center gap-1 "
-          >
-            <span>WS</span>
-            <Rainbow />
           </div>
         </div>
       ) : (
@@ -73,11 +65,6 @@ export default function WeatherCard({ data }: { data: WeatherDataType | null }) 
               <span className="font-bold text-sm">{data?.clouds.all ?? "--"}%</span>
               <span className="text-xs opacity-60">Nubosidad</span>
             </div>
-          </div>
-          {/* Label fijo abajo a la derecha */}
-          <div className="absolute right-6 -bottom-5 rounded-lg bg-card-label card-label text-background px-4 py-2 font-semibold shadow flex items-center gap-1 ">
-            <span>WS</span>
-            <Rainbow />
           </div>
         </>
       )}

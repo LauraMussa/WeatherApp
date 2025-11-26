@@ -7,6 +7,8 @@
   --button: #23536d;
   --input-background: #1a242ad8;
   --card-label: #f7d4c0a3;
+  --gray-text: #99aece;
+  --label-bg: #44617190;
 }
 
 [data-theme="light"] {
@@ -15,6 +17,9 @@
   --navbar: #6e9ab1;
   --button: #86b9d4;
   --input-background: #7db5d3;
+  --gray-text: #38404b;
+
+  --label-bg: #cce8f7ab;
 }
 
 body {
@@ -58,5 +63,17 @@ input[type="text"]:focus {
 
 .card-label {
   background: var(--navbar);
-  color: var(--background)
+  color: var(--background);
+}
+
+.daily-card {
+  background: var(--background);
+  color: var(--foreground);
+}
+.daily-card-temp {
+  color: var(--gray-text);
+}
+
+.daily-label{
+  background: var(--navbar);
 }
