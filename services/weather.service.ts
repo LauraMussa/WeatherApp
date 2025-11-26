@@ -1,3 +1,4 @@
+// https://api.openweathermap.org/data/2.5
 const API_KEY_ = process.env.NEXT_PUBLIC_API_KEY;
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
