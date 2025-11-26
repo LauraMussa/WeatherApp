@@ -57,7 +57,7 @@ export default function Home() {
       <div className="flex justify-end">
         <ToggleButton />
       </div>
-      <div className="flex flex-col justify-center items-center min-h-[60vh] gap-20">
+      <div className="flex flex-col justify-center items-center sm:min-h-[80vh] gap-20">
         <div className="rounded-2xl shadow-lg bg-[rgba(255,255,255,0.13)] backdrop-blur-lg p-8 ">
           <WeatherCard data={weather} />
         </div>

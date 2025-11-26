@@ -1055,7 +1055,7 @@ export const CloudsIcon = () => (
     id="outputsvg"
     width="512"
     height="512"
-    className="img-fluid w-25 h-fit opacity-80 opacity-80"
+    className="img-fluid w-25 h-fit opacity-80 "
     style={{
       transform: "none",
       transformOrigin: "50% 50%",
