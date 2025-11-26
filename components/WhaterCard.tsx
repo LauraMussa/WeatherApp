@@ -1,8 +1,9 @@
 import { WeatherDataType } from "@/types/weather.types";
-import { Cloud, Droplets, Thermometer, Sun, Wind, CloudRain, Sparkle, Rainbow, CloudSun } from "lucide-react";
-import {} from "lucide-react";
+import { Cloud, Droplets, Thermometer, Sun, Wind, CloudRain, Rainbow } from "lucide-react";
+import React from "react";
+
 export default function WeatherCard({ data }: { data: WeatherDataType | null }) {
-  const estadoIcono =
+  const statusIcon =
     data?.weather[0].main === "Clear" ? (
       <Sun size={40} color="#FFD700" />
     ) : data?.weather[0].main === "Clouds" ? (
@@ -14,60 +15,59 @@ export default function WeatherCard({ data }: { data: WeatherDataType | null }) 
     );
 
   return (
-    <section
-      className="max-w-lg min-w-[500px] w-full rounded-2xl shadow-lg p-8 relative  backdrop-blur-lg"
-      style={{
-        background: "var(--background)",
-        color: "var(--foreground)",
-      }}
-    >
-      {!data ? (
-        <div>
-          <div className="flex gap-1 justify-center items-center text-xl">
-            <span className="mt-2">Busca datos meteorológico por ciudad</span>
-          </div>
+   <section
+  className="max-w-full w-full rounded-2xl shadow-lg p-6 md:p-8 relative backdrop-blur-lg"
+  style={{
+    background: "var(--background)",
+    color: "var(--foreground)",
+  }}
+>
+  {!data ? (
+    <div className="flex flex-col justify-center items-center gap-4 min-h-[250px] px-4 md:px-0 text-center">
+      <span className="text-lg md:text-xl">
+        Introduce el nombre de una ciudad y obtén el pronóstico.
+      </span>
+      <p className="text-xs md:text-sm opacity-50 italic">Por ejemplo: Buenos Aires, Nueva York, París...</p>
+    </div>
+  ) : (
+    <>
+      <div className="flex flex-wrap items-center gap-4 mb-2">
+        {statusIcon && React.cloneElement(statusIcon, { size: 40 })} {/* Iconos ya tienen tamaño fijo, mantenlo */}
+        <div className="flex-1 min-w-[150px]">
+          <h2 className="text-xl md:text-2xl font-bold leading-6">
+            {data?.name}, {data?.sys.country}
+          </h2>
+          <p className="capitalize text-base mt-2">{data?.weather[0].description}</p>
         </div>
-      ) : (
-        <>
-          {/* Ciudad y estado principal */}
-          <div className="flex items-center gap-5 mb-2 ">
-            {estadoIcono}
-            <div>
-              <h2 className="text-2xl font-bold leading-6">
-                {data?.name}, {data?.sys.country}
-              </h2>
-              <p className="capitalize text-base mt-2">{data?.weather[0].description}</p>
-            </div>
-          </div>
-          {/* Temperatura */}
-          <div className="flex items-center mt-6 mb-3 gap-4">
-            <span className="text-5xl font-extrabold">
-              {data?.main.temp !== undefined ? `${Math.round(data.main.temp)}°` : "--"}
-            </span>
-            {data?.main.feels_like !== undefined && (
-              <span className="text-lg opacity-80">{`${Math.round(data.main.feels_like)}° sensación`}</span>
-            )}
-          </div>
-          {/* Datos secundarios ordenados horizontalmente */}
-          <div className="flex justify-between mt-4 mb-2">
-            <div className="flex flex-col items-center gap-1">
-              <Droplets size={25} />
-              <span className="font-bold text-sm">{data?.main.humidity ?? "--"}%</span>
-              <span className="text-xs opacity-60">Humedad</span>
-            </div>
-            <div className="flex flex-col items-center gap-1">
-              <Wind size={25} />
-              <span className="font-bold text-sm">{data?.wind.speed ?? "--"} m/s</span>
-              <span className="text-xs opacity-60">Viento</span>
-            </div>
-            <div className="flex flex-col items-center gap-1">
-              <Cloud size={25} />
-              <span className="font-bold text-sm">{data?.clouds.all ?? "--"}%</span>
-              <span className="text-xs opacity-60">Nubosidad</span>
-            </div>
-          </div>
-        </>
-      )}
-    </section>
+      </div>
+      <div className="flex flex-wrap items-center gap-2 md:gap-4 mt-6 mb-3">
+        <span className="text-4xl md:text-5xl font-extrabold">
+          {data?.main.temp !== undefined ? `${Math.round(data.main.temp)}°` : "--"}
+        </span>
+        {data?.main.feels_like !== undefined && (
+          <span className="text-base md:text-lg opacity-80">{`${Math.round(data.main.feels_like)}° sensación`}</span>
+        )}
+      </div>
+      <div className="flex flex-wrap justify-between gap-6 mt-4 mb-2 text-center">
+        <div className="flex flex-col items-center gap-1 flex-1 min-w-[70px]">
+          <Droplets size={25} />
+          <span className="font-bold text-sm">{data?.main.humidity ?? "--"}%</span>
+          <span className="text-xs opacity-60">Humedad</span>
+        </div>
+        <div className="flex flex-col items-center gap-1 flex-1 min-w-[70px]">
+          <Wind size={25} />
+          <span className="font-bold text-sm">{data?.wind.speed ?? "--"} m/s</span>
+          <span className="text-xs opacity-60">Viento</span>
+        </div>
+        <div className="flex flex-col items-center gap-1 flex-1 min-w-[70px]">
+          <Cloud size={25} />
+          <span className="font-bold text-sm">{data?.clouds.all ?? "--"}%</span>
+          <span className="text-xs opacity-60">Nubosidad</span>
+        </div>
+      </div>
+    </>
+  )}
+</section>
+
   );
 }

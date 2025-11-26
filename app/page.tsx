@@ -27,26 +27,29 @@ export default function Home() {
   };
 
   const groupedByDate: { [date: string]: UpcomingList[] } = {};
+
   weatherUpcoming?.forEach((item) => {
     const date = item.dt_txt.split(" ")[0];
     if (!groupedByDate[date]) groupedByDate[date] = [];
     groupedByDate[date].push(item);
   });
+  const today = new Date().toISOString().split("T")[0];
 
-  const dailySummaries = Object.entries(groupedByDate).map(([date, items]) => {
-    const temps = items.map((i) => i.main.temp);
-    const min = Math.min(...temps);
-    const max = Math.max(...temps);
+  const dailySummaries = Object.entries(groupedByDate)
+    .filter(([date]) => date > today)
+    .map(([date, items]) => {
+      const temps = items.map((i) => i.main.temp);
+      const min = Math.min(...temps);
+      const max = Math.max(...temps);
+      const middayItem = items.find((i) => i.dt_txt.includes("12:00:00")) ?? items[0];
 
-    const middayItem = items.find((i) => i.dt_txt.includes("12:00:00")) ?? items[0];
-
-    return {
-      date,
-      tempMin: min,
-      tempMax: max,
-      weather: middayItem.weather[0],
-    };
-  });
+      return {
+        date,
+        tempMin: min,
+        tempMax: max,
+        weather: middayItem.weather[0],
+      };
+    });
 
   return (
     <div>
@@ -58,9 +61,7 @@ export default function Home() {
         <div className="rounded-2xl shadow-lg bg-[rgba(255,255,255,0.13)] backdrop-blur-lg p-8 ">
           <WeatherCard data={weather} />
         </div>
-      <div className="">
         <DailyCard dailySummaries={dailySummaries} />
-      </div>
       </div>
     </div>
   );

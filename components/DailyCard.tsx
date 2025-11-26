@@ -55,7 +55,9 @@ const getWeatherIconByMain = (main: string) => {
 };
 
 const formatDate = (dateString: string) => {
-  return new Date(dateString).toLocaleDateString("es-ES", {
+  const [year, month, day] = dateString.split("-");
+  const date = new Date(Number(year), Number(month) - 1, Number(day));
+  return date.toLocaleDateString("es-ES", {
     day: "2-digit",
     month: "short",
     year: "numeric",
@@ -66,36 +68,34 @@ const DailyCard = ({ dailySummaries }: { dailySummaries: DailyForecast[] }) => {
     description.charAt(0).toUpperCase() + description.slice(1);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-6 gap-6 p-4 max-w-500 mx-auto">
-      {dailySummaries.map((d, i) => (
-        <div className="rounded-2xl shadow-lg bg-[rgba(255,255,255,0.13)] backdrop-blur-lg p-5 ">
-          <div
-            key={i}
-            className="relative daily-card rounded-lg shadow-md p-6 flex flex-col items-center text-center"
-          >
-            <span className="absolute -top-23 left-1/2 transform -translate-x-1/2">
-              {getWeatherIconByMain(d.weather.main)}
-            </span>
+   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 p-4 max-w-full md:max-w-6xl mx-auto">
+  {dailySummaries.map((d, i) => (
+    <div key={i} className="rounded-2xl shadow-lg bg-[rgba(255,255,255,0.13)] backdrop-blur-lg p-4 ">
+      <div className="relative daily-card rounded-lg shadow-md p-4 sm:p-6 flex flex-col items-center text-center">
+        <span className="absolute -top-17 left-1/2 transform -translate-x-1/2">
+          {getWeatherIconByMain(d.weather.main)}
+        </span>
 
-            <p className="mt-5 font-semibold text-lg">{formatDate(d.date)}</p>
-            <p className=" mt-1 rounded-2xl px-2 py-0.5 daily-label text-slate-200 ">
-              {descriptionToUppercase(d.weather.description)}
-            </p>
+        <p className="mt-5 font-semibold text-base sm:text-lg">{formatDate(d.date)}</p>
+        <p className="mt-1 rounded-2xl px-2 py-0.5 daily-label text-slate-200 text-sm max-w-full">
+          {descriptionToUppercase(d.weather.description)}
+        </p>
 
-            <div className="mt-3 flex justify-center gap-4 w-full text-sm daily-card-temp ">
-              <p>
-                Max: <span className="font-medium">{d.tempMax}°</span>
-              </p>
-              <p>
-                Min: <span className="font-medium">{d.tempMin}°</span>
-              </p>
-            </div>
-
-            <p className="mt-2 uppercase tracking-wide text-xs ">{d.weather.main}</p>
-          </div>
+        <div className="mt-3 flex justify-center gap-4 w-full text-xs sm:text-sm daily-card-temp">
+          <p>
+            Max: <span className="font-medium">{d.tempMax}°</span>
+          </p>
+          <p>
+            Min: <span className="font-medium">{d.tempMin}°</span>
+          </p>
         </div>
-      ))}
+
+        <p className="mt-2 uppercase tracking-wide text-xs sm:text-sm">{d.weather.main}</p>
+      </div>
     </div>
+  ))}
+</div>
+
   );
 };
 

@@ -2,7 +2,7 @@ export const iconThunderstorm = () => {
   return (
     <>
       <svg
-        className="img-fluid w-30 h-fit"
+        className="img-fluid w-25 h-fit opacity-80"
         id="outputsvg"
         xmlns="http://www.w3.org/2000/svg"
         style={{
@@ -127,7 +127,7 @@ export const DrizzleIcon = () => {
         id="outputsvg"
         width="512"
         height="512"
-        className="img-fluid w-30 h-fit"
+        className="img-fluid w-25 h-fit opacity-80"
         cursor="move"
         style={{
           transform: "none",
@@ -533,7 +533,7 @@ export const RainIcon = () => {
         id="outputsvg"
         width="512"
         height="512"
-        className="img-fluid w-30 h-fit"
+        className="img-fluid w-25 h-fit opacity-80"
         cursor="move"
         style={{
           transform: "none",
@@ -753,7 +753,7 @@ export const SnowIcon = () => {
         id="outputsvg"
         width="512"
         height="512"
-        className="img-fluid w-30 h-fit"
+        className="img-fluid w-25 h-fit opacity-80 "
         style={{
           transform: "none",
           transformOrigin: "50% 50%",
@@ -958,7 +958,7 @@ export const ClearIcon = () => {
         id="outputsvg"
         width="512"
         height="512"
-        className="img-fluid w-30 h-fit"
+        className="img-fluid w-25 h-fit opacity-80"
         style={{
           transform: "none",
           transformOrigin: "50% 50%",
@@ -1055,7 +1055,7 @@ export const CloudsIcon = () => (
     id="outputsvg"
     width="512"
     height="512"
-    className="img-fluid w-30 h-fit"
+    className="img-fluid w-25 h-fit opacity-80 opacity-80"
     style={{
       transform: "none",
       transformOrigin: "50% 50%",
@@ -1156,7 +1156,7 @@ export const MistIcon = () => (
     id="outputsvg"
     width="512"
     height="512"
-    className="img-fluid w-30 h-fit"
+    className="img-fluid w-25 h-fit opacity-80"
     style={{
       transform: "none",
       transformOrigin: "50% 50%",
@@ -1269,7 +1269,7 @@ export const FogIcon = () => (
     id="outputsvg"
     width="512"
     height="512"
-    className="img-fluid w-30 h-fit"
+    className="img-fluid w-25 h-fit opacity-80"
     style={{
       transform: "none",
       transformOrigin: "50% 50%",
@@ -1375,7 +1375,7 @@ export const SmokeIcon = () => (
     id="outputsvg"
     width="512"
     height="512"
-    className="img-fluid w-30 h-fit"
+    className="img-fluid w-25 h-fit opacity-80"
     style={{
       transform: "none",
       transformOrigin: "50% 50%",
@@ -1426,7 +1426,7 @@ export const HazeIcon = () => (
     id="outputsvg"
     width="512"
     height="512"
-    className="img-fluid w-30 h-fit"
+    className="img-fluid w-25 h-fit opacity-80"
     style={{
       transform: "none",
       transformOrigin: "50% 50%",
@@ -1512,7 +1512,7 @@ export const DustIcon = () => (
     id="outputsvg"
     width="512"
     height="512"
-    className="img-fluid w-30 h-fit"
+    className="img-fluid w-25 h-fit opacity-80"
     style={{
       transform: "none",
       transformOrigin: "50% 50%",
@@ -1672,7 +1672,7 @@ export const SandIcon = () => (
     id="outputsvg"
     width="512"
     height="512"
-    className="img-fluid w-30 h-fit"
+    className="img-fluid w-25 h-fit opacity-80"
     style={{
       transform: "none",
       transformOrigin: "50% 50%",
@@ -1812,7 +1812,7 @@ export const AshIcon = () => (
     id="outputsvg"
     width="512"
     height="512"
-    className="img-fluid w-30 h-fit"
+    className="img-fluid w-25 h-fit opacity-80"
     style={{
       transform: "none",
       transformOrigin: "50% 50%",
@@ -1956,7 +1956,7 @@ export const SquallIcon = () => (
     id="outputsvg"
     width="512"
     height="512"
-    className="img-fluid w-30 h-fit"
+    className="img-fluid w-25 h-fit opacity-80"
     style={{
       transform: "none",
       transformOrigin: "50% 50%",
@@ -2077,7 +2077,7 @@ export const TornadoIcon = () => (
     id="outputsvg"
     width="512"
     height="512"
-    className="img-fluid w-30 h-fit"
+    className="img-fluid w-25 h-fit opacity-80"
     style={{
       transform: "none",
       transformOrigin: "50% 50%",
