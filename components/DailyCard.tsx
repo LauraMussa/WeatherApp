@@ -54,6 +54,13 @@ const getWeatherIconByMain = (main: string) => {
   }
 };
 
+const formatDate = (dateString: string) => {
+  return new Date(dateString).toLocaleDateString("es-ES", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
+};
 const DailyCard = ({ dailySummaries }: { dailySummaries: DailyForecast[] }) => {
   const descriptionToUppercase = (description: string) =>
     description.charAt(0).toUpperCase() + description.slice(1);
@@ -70,7 +77,7 @@ const DailyCard = ({ dailySummaries }: { dailySummaries: DailyForecast[] }) => {
               {getWeatherIconByMain(d.weather.main)}
             </span>
 
-            <p className="mt-5 font-semibold text-lg">{d.date}</p>
+            <p className="mt-5 font-semibold text-lg">{formatDate(d.date)}</p>
             <p className=" mt-1 rounded-2xl px-2 py-0.5 daily-label text-slate-200 ">
               {descriptionToUppercase(d.weather.description)}
             </p>
