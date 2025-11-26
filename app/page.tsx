@@ -7,12 +7,15 @@ import { UpcomingList, WeatherDataType } from "@/types/weather.types";
 import { useState } from "react";
 import { toastError } from "./helpers/alerts";
 import DailyCard from "@/components/DailyCard";
+import CloudLoader from "@/components/Loader";
 
 export default function Home() {
   const [weather, setWeather] = useState<WeatherDataType | null>(null);
   const [weatherUpcoming, setWeatherUpcoming] = useState<UpcomingList[] | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const fetchWeather = async (city: string) => {
+    setLoading(true);
     try {
       const weatherData = await getWeatherByCity(city);
       const upcomingData = await getWeatherUpcomingDays(city);
@@ -23,6 +26,8 @@ export default function Home() {
       const msg = error?.message.charAt(0).toUpperCase() + error.message.slice(1);
       toastError(msg || "Ocurrió un error");
       throw error;
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -57,12 +62,20 @@ export default function Home() {
       <div className="flex justify-end">
         <ToggleButton />
       </div>
-      <div className="flex flex-col justify-center items-center sm:min-h-[80vh] gap-20">
-        <div className="rounded-2xl shadow-lg bg-[rgba(255,255,255,0.13)] backdrop-blur-lg p-8 ">
-          <WeatherCard data={weather} />
+      {loading ? (
+        <div className="min-h-[80vh] flex flex-col justify-center items-center">
+          <CloudLoader />
         </div>
-        <DailyCard dailySummaries={dailySummaries} />
-      </div>
+      ) : (
+        <>
+          <div className="flex flex-col justify-center items-center sm:min-h-[80vh] gap-20">
+            <div className="rounded-2xl shadow-lg bg-[rgba(255,255,255,0.13)] backdrop-blur-lg p-8 ">
+              <WeatherCard data={weather} />
+            </div>
+            <DailyCard dailySummaries={dailySummaries} />
+          </div>
+        </>
+      )}
     </div>
   );
 }
